@@ -45,6 +45,7 @@ formBox.addEventListener('submit', function (e) {
     // Recupero la parola inserita dall'utente
     const textValue = textInput.value.trim();
     console.log(textValue);
+    textInput.value = '';
 
     //! Validazione
     if (!textValue || !isNaN(textValue)) {
@@ -87,6 +88,18 @@ formBox.addEventListener('submit', function (e) {
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+//** Function to sum 2 numbers
+/**
+ * @param {number} num1 Number1 to sum
+ * @param {number} num2 Number2 to sum
+ * @returns {number} Sum of num1 + num2
+ */
+function getSumOfTwoNumbers(num1, num2) {
+    return num1 + num2;
+}
+
+
+
 
 // Recupero gli elementi dal DOM
 const formOddEven = document.getElementById('form-box-oddeven');
@@ -94,6 +107,8 @@ const selectBox = document.getElementById('select-box');
 const numberInput = document.getElementById('number-input');
 const betButton = document.getElementById('bet-button');
 const betResult = document.getElementById('bet-result');
+
+
 
 // Aggancio un evento al form (disattivando il suo comportamento di default)
 formOddEven.addEventListener('submit', function (e) {
@@ -103,7 +118,7 @@ formOddEven.addEventListener('submit', function (e) {
     const userChoice = selectBox.value;
 
     // Recupero il numero scelto dall'utente
-    const numberValue = numberInput.value;
+    const numberValue = parseInt(numberInput.value);
 
     //! Validazione dei campi
     if (numberValue < 1 || numberValue > 5 || isNaN(numberValue)) {
@@ -112,13 +127,43 @@ formOddEven.addEventListener('submit', function (e) {
         return;
     }
 
-    if (userChoice === 'odd' && numberValue % 2 === 0) {
+    // Imposto una variabile somma
+    let sum = 0;
+    console.log(sum);
+
+    // Imposto la variabile messaggio
+    let playerMessage = '';
+
+    if (userChoice === 'odd' && numberValue % 2 == 0) {
         alert('Devi inserire un numero dispari!');
         numberInput.value = '';
         return;
-    } else if (userChoice === 'even' && !numberValue % 2 === 0) {
+    } else if (userChoice === 'even' && numberValue % 2 !== 0) {
         alert('Devi inserire un numero pari!');
         numberInput.value = '';
         return;
+    } else {
+        // Generiamo un numero random(sempre da 1 a 5) per il computer con la funzione.
+        const randomNumber = getRandomNumber(1, 5);
+
+        // Sommiamo i due numeri
+        let sum = getSumOfTwoNumbers(randomNumber, numberValue);
+
+        //! Validazione della somma
+        if (sum % 2 === 0 && userChoice === 'even') {
+            playerMessage = 'Hai vinto!';
+        } else if (sum % 2 !== 0 && userChoice === 'odd') {
+            playerMessage = 'Hai vinto!';
+        } else {
+            playerMessage = 'Hai perso!';
+        }
+        console.log('Pari o dispari:', userChoice);
+        console.log('Numero inserito', numberValue);
+        console.log('Numero random:', randomNumber);
+        console.log('Somma:', sum);
     }
+
+
+    betResult.innerText = playerMessage;
+
 })
