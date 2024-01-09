@@ -1,6 +1,14 @@
-console.log('JS OK');
+//todo -------------------------- PALINDROMA -------------------------- \\
 
-//? FUNCTIONS
+//* Chiedere all’utente di inserire una parola (con un prompt)
+//* Creare una funzione per capire se la parola inserita è palindroma
+//* Stampiamo il risultato in console
+
+//! Bonus
+//* Raccogliere le informazioni dall'utente usando form, input, button in pagina invece che coi prompt.
+//* Stampare i risultati in pagina, invece che in console
+
+//? ---------------------- FUNCTIONS ---------------------- \\
 
 //** Function to verify if word is palindrome
 /**
@@ -19,25 +27,11 @@ function isPalindrome(text) {
     return result;
 }
 
-
-//todo -------------------------- PALINDROMA -------------------------- \\
-
-//* Chiedere all’utente di inserire una parola (con un prompt)
-//* Creare una funzione per capire se la parola inserita è palindroma
-//* Stampiamo il risultato in console
-
-//! Bonus
-//* Raccogliere le informazioni dall'utente usando form, input, button in pagina invece che coi prompt.
-//* Stampare i risultati in pagina, invece che in console
-
 // Recupero gli elementi dal DOM
 const formBox = document.getElementById('form-box');
 const textInput = document.getElementById('text-input');
 const verifyButton = document.getElementById('verify-button');
 const resultElement = document.getElementById('result');
-
-// Focus sull'area testo del form
-textInput.focus();
 
 // Imposto un messaggio da stampare in pagina
 let message = '';
@@ -67,4 +61,34 @@ formBox.addEventListener('submit', function (e) {
     }
 
     resultElement.innerText = message;
+})
+
+
+//todo -------------------------- PARI E DISPARI -------------------------- \\
+
+//* L’utente sceglie pari o dispari e inserisce un numero da 1 a 5.(con un prompt)
+//* Generiamo un numero random(sempre da 1 a 5) per il computer(usando una funzione).
+//* Sommiamo i due numeri
+//* Stabiliamo se la somma dei due numeri è pari o dispari(usando una funzione)
+//* Dichiariamo chi ha vinto in console.
+
+//! Bonus
+//* Raccogliere le informazioni dall'utente usando form, input, button in pagina invece che coi prompt.
+//* Stampare i risultati in pagina, invece che in console
+
+// Recupero gli elementi dal DOM
+const formOddEven = document.getElementById('form-box-oddeven');
+const evenCheck = document.getElementById('even');
+const oddCheck = document.getElementById('odd');
+const numberInput = document.getElementById('number-input');
+const betButton = document.getElementById('bet-button');
+
+// Aggancio un evento al form (disattivando il suo comportamento di default)
+formOddEven.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Recupero il numero inserito dall'utente
+    let numberValue = parseInt(numberInput.value);
+    console.log(numberValue);
+    numberInput.value = '';
 })
