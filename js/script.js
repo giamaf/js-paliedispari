@@ -1,8 +1,27 @@
 console.log('JS OK');
 
-//todo ------------------------------------------ \\
+//? FUNCTIONS
 
-//! Palindroma
+//** Function to verify if word is palindrome
+/**
+ * @param {string} text Text will be verified
+ * @returns {boolean} True/False
+ */
+
+function isPalindrome(text) {
+    let result = false;
+    const originalText = text;
+    const reverseText = text.split('').reverse().join('');
+
+    if (originalText == reverseText) {
+        result = true;
+    }
+    return result;
+}
+
+
+//todo -------------------------- PALINDROMA -------------------------- \\
+
 //* Chiedere all’utente di inserire una parola (con un prompt)
 //* Creare una funzione per capire se la parola inserita è palindroma
 //* Stampiamo il risultato in console
@@ -20,6 +39,9 @@ const result = document.getElementById('result');
 // Focus sull'area testo del form
 textInput.focus();
 
+// Imposto un messaggio da stampare in pagina
+let message = '';
+
 // Aggancio un evento al form (disattivando il suo comportamento di default)
 formBox.addEventListener('submit', function (e) {
 
@@ -29,4 +51,17 @@ formBox.addEventListener('submit', function (e) {
     // Recupero la parola inserita dall'utente
     const textValue = textInput.value.trim();
     console.log(textValue);
+    isPalindrome(textValue);
+
+    if (!textValue || !isNaN(textValue)) {
+        alert('Dati non validi!');
+        return;
+    }
+    if (isPalindrome = true) {
+        message = 'La parola è palindroma!';
+    } else {
+        message = 'La parola NON è palindroma!';
+    }
+
+    result.innerText = message;
 })
