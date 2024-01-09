@@ -76,19 +76,49 @@ formBox.addEventListener('submit', function (e) {
 //* Raccogliere le informazioni dall'utente usando form, input, button in pagina invece che coi prompt.
 //* Stampare i risultati in pagina, invece che in console
 
+//? ---------------------- FUNCTIONS ---------------------- \\
+
+//** Function to randomize a number between min and max numbers
+/**
+ * @param {number} min Min number
+ * @param {number} max Max number
+ * @returns {number} Random number between min and max
+ */
+function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 // Recupero gli elementi dal DOM
 const formOddEven = document.getElementById('form-box-oddeven');
-const evenCheck = document.getElementById('even');
-const oddCheck = document.getElementById('odd');
+const selectBox = document.getElementById('select-box');
 const numberInput = document.getElementById('number-input');
 const betButton = document.getElementById('bet-button');
+const betResult = document.getElementById('bet-result');
 
 // Aggancio un evento al form (disattivando il suo comportamento di default)
 formOddEven.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // Recupero il numero inserito dall'utente
-    let numberValue = parseInt(numberInput.value);
-    console.log(numberValue);
-    numberInput.value = '';
+    // Recupero la scelta dell'utente pari/dispari
+    const userChoice = selectBox.value;
+
+    // Recupero il numero scelto dall'utente
+    const numberValue = numberInput.value;
+
+    //! Validazione dei campi
+    if (numberValue < 1 || numberValue > 5 || isNaN(numberValue)) {
+        alert('Dati non validi!');
+        numberInput.value = '';
+        return;
+    }
+
+    if (userChoice === 'odd' && numberValue % 2 === 0) {
+        alert('Devi inserire un numero dispari!');
+        numberInput.value = '';
+        return;
+    } else if (userChoice === 'even' && !numberValue % 2 === 0) {
+        alert('Devi inserire un numero pari!');
+        numberInput.value = '';
+        return;
+    }
 })
