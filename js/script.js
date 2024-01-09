@@ -17,4 +17,16 @@ const textInput = document.getElementById('text-input');
 const verifyButton = document.getElementById('verify-button');
 const result = document.getElementById('result');
 
+// Focus sull'area testo del form
+textInput.focus();
 
+// Aggancio un evento al form (disattivando il suo comportamento di default)
+formBox.addEventListener('submit', function (e) {
+
+    // Disattivo comportamento di default
+    e.preventDefault();
+
+    // Recupero la parola inserita dall'utente
+    const textValue = textInput.value.trim();
+    console.log(textValue);
+})
