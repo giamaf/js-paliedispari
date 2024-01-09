@@ -10,8 +10,8 @@ console.log('JS OK');
 
 function isPalindrome(text) {
     let result = false;
-    const originalText = text;
-    const reverseText = text.split('').reverse().join('');
+    let originalText = text.toLowerCase();
+    let reverseText = text.split('').reverse().join('').toLowerCase();
 
     if (originalText == reverseText) {
         result = true;
@@ -34,13 +34,13 @@ function isPalindrome(text) {
 const formBox = document.getElementById('form-box');
 const textInput = document.getElementById('text-input');
 const verifyButton = document.getElementById('verify-button');
-const result = document.getElementById('result');
+const resultElement = document.getElementById('result');
 
 // Focus sull'area testo del form
 textInput.focus();
 
 // Imposto un messaggio da stampare in pagina
-let message = 'La parola NON è palindroma!';
+let message = '';
 
 // Aggancio un evento al form (disattivando il suo comportamento di default)
 formBox.addEventListener('submit', function (e) {
@@ -51,17 +51,20 @@ formBox.addEventListener('submit', function (e) {
     // Recupero la parola inserita dall'utente
     const textValue = textInput.value.trim();
     console.log(textValue);
-    //! Valdiazione
+
+    //! Validazione
     if (!textValue || !isNaN(textValue)) {
         alert('Dati non validi!');
         return;
     }
 
-    isPalindrome(textValue);
+    const result = isPalindrome(textValue);
 
-    if (isPalindrome == true) {
+    if (result == true) {
         message = 'La parola è palindroma!';
+    } else if (result == false) {
+        message = 'La parola NON è palindroma!'
     }
 
-    result.innerText = message;
+    resultElement.innerText = message;
 })
