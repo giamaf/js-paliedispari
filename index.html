@@ -59,36 +59,30 @@
                 <h3>Pari e Dispari</h3>
             </div>
             <div class="card-body">
-                <form id="form-box-oddeven">
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="even">
-                        <label class="form-check-label" for="even">
-                            Pari
-                        </label>
-                    </div>
+                <form id="form-box-oddeven" class="col-3">
 
+                    <select class="form-select" aria-label="Default select example" id="select-box">
+                        <option selected>Seleziona un'opzione</option>
+                        <option value="even">Pari</option>
+                        <option value="odd">Dispari</option>
+                    </select>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="odd">
-                        <label class="form-check-label" for="odd">
-                            Dispari
-                        </label>
-                    </div>
-
-                    <div class=" col-2 mt-3">
+                    <div class="mt-3">
                         <input class="form-control mb-3" id="number-input" placeholder="numero da 1 a 5" required
                             min="1" max="5">
                     </div>
-                    <div class="col-12 mt-3">
+
+                    <div class="mt-3">
                         <button type="submit" class="btn btn-primary" id="bet-button">Bet</button>
                     </div>
+
                 </form>
             </div>
             <div class="card-footer p-3">
                 <h6 id="bet-result">
                     <strong>
-                        Hai vinto!
+
                     </strong>
                 </h6>
             </div>
