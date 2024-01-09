@@ -40,7 +40,7 @@ const result = document.getElementById('result');
 textInput.focus();
 
 // Imposto un messaggio da stampare in pagina
-let message = '';
+let message = 'La parola NON è palindroma!';
 
 // Aggancio un evento al form (disattivando il suo comportamento di default)
 formBox.addEventListener('submit', function (e) {
@@ -51,16 +51,16 @@ formBox.addEventListener('submit', function (e) {
     // Recupero la parola inserita dall'utente
     const textValue = textInput.value.trim();
     console.log(textValue);
-    isPalindrome(textValue);
-
+    //! Valdiazione
     if (!textValue || !isNaN(textValue)) {
         alert('Dati non validi!');
         return;
     }
-    if (isPalindrome = true) {
+
+    isPalindrome(textValue);
+
+    if (isPalindrome == true) {
         message = 'La parola è palindroma!';
-    } else {
-        message = 'La parola NON è palindroma!';
     }
 
     result.innerText = message;
